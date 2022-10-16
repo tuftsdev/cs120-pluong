@@ -20,34 +20,36 @@
 	var lyrics = document.getElementById("lyrics");
 	//lyrics = video.currentTime;
 	video.addEventListener("timeupdate", function() {
-		if (video.currentTime>=.6 && video.currentTime <.17) {
+		//console.log(video.currentTime);
+		
+		if (video.currentTime>=6.30 && video.currentTime <17) {
 			lyrics.innerHTML = "<p>Come gather round, children,</p>"
 			lyrics.innerHTML +=	"<p>It's high time ye learned</p>";
 			lyrics.innerHTML +=	"<p>'Bout a hero named Homer</p>";
 			lyrics.innerHTML +=	"<p>And a devil named Burns. </p>";
 		}
-		else if (video.currentTime >=.17 && video.currentTime <.38) {
+		else if (video.currentTime >=17.03 && video.currentTime <38) {
 			lyrics.innerHTML = "<p> We'll march 'till we drop</p>";
 			lyrics.innerHTML +=	"<p>The girls and the fellas.</p>";
 			lyrics.innerHTML +=	"<p>We'll fight 'till the death</p>"; 
 			lyrics.innerHTML +=	"<p>Or else fold like umbrellas. </p>";
 		}
-		else if (video.currentTime >=.38 && video.currentTime <.52) {
+		else if (video.currentTime >=38.20 && video.currentTime <52) {
 			lyrics.innerHTML = "<p> So we'll march day and night</p>";
 			lyrics.innerHTML +=	"<p>By the big cooling tower.</p>";
 			lyrics.innerHTML +=	"<p>They have the plant</p>"; 
 			lyrics.innerHTML +=	"<p>But we have the power.</p>";
 		}
-		else if (video.currentTime >=.52 && video.currentTime <1.12) {
+		else if (video.currentTime >=53.25 && video.currentTime <72) {
 			lyrics.innerHTML = "<p>Now do \"Classical Gas!\"</p>";
 		}
-		else if (video.currentTime >=1.13 && video.currentTime <1.22) {
+		else if (video.currentTime >=7.89 && video.currentTime <82) {
 			lyrics.innerHTML = "<p> So we'll march day and night</p>";
 			lyrics.innerHTML +=	"<p>By the big cooling tower.</p>";
 			lyrics.innerHTML +=	"<p>They have the plant</p>";
 			lyrics.innerHTML +=	"<p>But we have the power. </p>";
 		}
-		else if (video.currentTime >=1.22 && video.currentTime <1.33) {
+		else if (video.currentTime >=82.20 && video.currentTime <93) {
 			lyrics.innerHTML = "<p> So we'll march day and night</p>";
 			lyrics.innerHTML +=	"<p>By the big cooling tower.</p>";
 			lyrics.innerHTML +=	"<p>They have the plant</p>";
@@ -56,6 +58,7 @@
 		else {
 			lyrics.innerHTML = "";
 		}
+		
 		
 	}, false);
 
