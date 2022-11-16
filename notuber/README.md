@@ -1,15 +1,12 @@
 1. Implementation:
-    a. updated map.js file from lab #8 
-    b. displayed all vehicles from the XMLHttpRequest
-    c. calculated distance using geometry library
-    d. added polyline between my location and closest vehicle
-    e. displayed each vehicle's name and how far it is away from me when clicking on the car icon
-    f. displayed the closest car to me and my location information via latitude and longitude
+    a. updated map.js file from lab #10; just one line of code got changed 
+    b. updated inde.js file to return the json object with 6 vehicles; using some random values for lat and lng; 
+        using crypto randombytes for random id and defaulted date time for created_at
+    c. added insert queries in an attempt to complete beyond point #1
 
-2.  I coded this lab on my own, but researched information on the web.  Loi Truong also showed me how to debug and provided suggestions on fixing some of the errors
-    that I encountered.
+2.  I coded this lab on my own, but researched information on the web.  
 
-3. I spent 4-5 hours.
+3. I spent 12-15 hours.
 
 
 
