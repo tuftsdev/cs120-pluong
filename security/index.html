@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Security and Privacy Assessment of Ride-Hailing Service</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+	<h1 id="reportname">Security and Privacy Assessment of Ride-Hailing Service</h1>
+
+	<h2 id="abstract">Abstract of Findings</h2>
+		<p>This report provides the security risks that have been found when analyzing the Ride-Hailing site, using the OWASP ZAP tool.  
+			The contents of header records were not configured properly. Some of the items such as X-Content-Type-Options and Content Security 
+			Policy (CSP) were not defined to include approved data sources and data contents. These could lead to Cross Site Scripting (XSS) and 
+			data injection attacks. The response header(s) do not suppress the "X-Power-By" feature and leak information about the website which 
+			could lead attackers to identify other frameworks/components that cause vulnerabilities. Additionally, the user inputs are not validated 
+			to prevent SQL injection type of attacks throughout the code. The severities for these issues range from low to high, but they can easily be prevented by
+			configuring the headers properly and adding user data validations. The required efforts and financial investment are not significant.  Thus, we would
+			recommend your company promptly proceed with the enhancments before actual exploitations are incurred. 
+		</p>
+	<h3 id="intro">Introduction</h3>
+		<p>In today world, security is an important aspect of any applications or webistes.  When the security aspect is not handled with care,
+			it can lead to major issues once the application is deployed to users.  It provided opportunities for attackers to exploit vulnerarbilties
+			which would lead to damages for both the companies that developed the applications and for end users.  It would result in both financial
+			and psychological damages.  
+
+			With the above, I have been hired to analyze the Ride-Hailing Service to identify risk areas and provide potential solutions.  Thus,
+			this report will include four areas that the Ride-Hailing Service company should review and update to minimize vulnerabilities.
+		</p>
+	<h4 id="method">Methodology</h4>
+		<p>To identify risk areas, the OWASP ZAP application is used.  Three attack scans are performed:
+			<ul class="attacks">
+				<li>Initial Homepage via http://localhost:5005/</li>
+				<li>Get Passenger list via http://localhost:5005/passenger.json </li>
+				<li>Get vehicle list via http://localhost:5005/vehicle.json</li>
+			</ul>
+			Additionally, manual code review is also performed. The	results of these scans are reviewed and captured in the below issue table.  
+			Note that issues are only listed once, but they can occur in multiple part
+			of the code.
+
+		</p>
+	<h5 id="issues">Issues Found</h5>
+		<table id="tblissues">
+			<tr>
+			  <th id="issue">Issue</th>
+			  <th id="loc">Location</th>
+			  <th id="sev">Severity</th>
+			  <th id="desc">Description</th>
+			  <th id="proof">Proof</th>
+			  <th id="res">Resolution</th>
+			</tr>
+			<tr>
+			  	<td>The CSP and X-Content-Type-Options Header Not Set</td>
+			  	<td>Lines 103, 86, and 71 of the server code</td>
+			  	<td>Medium</td>
+			  	<td>The CSP and X-Content-Type-Options were not set for the header.</td>
+			  	<td><img src="Issue1.png"></td>
+				<td>The code should be configured to set the CSP and X-Content-Type-Options.</td>
+			</tr>
+			<tr>
+				<td>Server Leaks Information</td>
+				<td>Lines 103, 86, and 71 of the server code</td>
+				<td>Low</td>
+				<td>The server leaks information via "X-Power-By" HTTP Response Header field when responding to the request of passenger list.  
+					This could lead attackers to identify other components of the site.</td>
+				<td><img src="Issue2.png"></td>
+			  <td>The "X-Power-By" should be suppressed instead of leaving as defaulted.</td>
+		  	</tr>
+			<tr>
+				<td>Frame Information Missing</td>
+				<td>Lines 103, 86, and 71 of the server code</td>
+				<td>Medium</td>
+				<td>The responde header for getting the vehicle list does not include CSP with 'frame-ancestor' directive or X-Frame-Options to
+					protect against 'ClickJacking' attacks.</td>
+				<td><img src="Issue3.png"></td>
+			  <td>Either the the CSP and/or the X-Frame-Options should be configured when sending a response header.</td>
+		  	</tr>
+			  <tr>
+				<td>Missing User Data Validation</td>
+				<td>Lines 74-80 and 89-94,  of the server code</td>
+				<td>high</td>
+				<td>Username is one of the three inputs that are taken from the users and it is a string type.  It is also used to query the database.  However,
+					there is no code to validate that the actual contents of this field to ensure no SQL injection is included to prevent unauthorized data access.</td>
+				<td><img src="Issue4.png"></td>
+			  <td>Add code to validate the username's contents</td>
+		  	</tr>
+		</table>
+	<h6 id="conclusion">Conclusion</h6>
+		<p>In conclusion, additional enhancements are required in order to minimize security risks. However, the required efforts to update the code are not significant.
+			It would take a few hours to update the code, a day for penetration testing, and a few hours to coordinate the schedule and time to deploy to users. The final
+			costs for these enhancements will depend on the billing rates of our consultants at the time of execution which will range from $10,00 to $20,000.  Once the
+			scope of work is signed, we target to complete the project within two weeks.  We would recommend your company to proceed with this investment in order to
+			minimize security risks.  You will prevent financial losses, company's brand damages, and users' trusts besides all potential legal issues when your website
+			get exploited.
+		</p>
+
+</body>
+</html>	
+
+
+
